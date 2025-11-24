@@ -1,10 +1,8 @@
-// frontend/src/api.js
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "http://localhost:5000/api"
+  baseURL: process.env.REACT_APP_API_URL + "/api"
 });
-
 
 // attach token
 API.interceptors.request.use((config) => {
@@ -15,7 +13,6 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// simple AI recommendations for a project
 export const getProjectRecommendations = (id) =>
   API.get(`/projects/${id}/recommend`);
 
